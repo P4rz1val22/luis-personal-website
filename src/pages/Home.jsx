@@ -17,7 +17,7 @@ const Home = () => {
       </div>
       <div className="img-section">
         <div className="hoz-container">
-          <div className={`text-box left " ${isMobile ? "big" : ""}`}>
+          <div className={`text-box " ${isMobile ? "big" : ""}`}>
             <h2>Hello there!</h2> My name is <b>Luis Enrique Sarmiento</b>, a
             Computer Science student at Northeastern University, currently based
             in Boston, MA. Originally from Venezuela and completing my studies
@@ -30,18 +30,18 @@ const Home = () => {
             social change and improve the lives of others.
           </div>
           <img
-            className={` ${!isMobile ? "box left" : "hide"}`}
+            className={` ${!isMobile ? "box" : "hide"}`}
             src="./assets/Images/IMG_1543.jpeg"
             loading="lazy"
           />
         </div>
         <div className="hoz-container">
           <img
-            className={` ${!isMobile ? "box left" : "hide"}`}
+            className={` ${!isMobile ? "box" : "hide"}`}
             src="./assets/Images/IMG_9476.jpeg"
             loading="lazy"
           />
-          <div className={`text-box left " ${isMobile ? "big" : ""}`}>
+          <div className={`text-box " ${isMobile ? "big" : ""}`}>
             I'm dedicated to using my skills to create tangible, positive
             change. Whether it's through coding, leading or collaborating with
             others, I'm determined to push the boundaries of innovation and
