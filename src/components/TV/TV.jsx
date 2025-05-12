@@ -64,7 +64,7 @@ const Tv = () => {
           className={`screen ${isTransitioning ? "static" : ""}`}
           style={{ background: gradients[bgIndex] }}
         >
-          LUIS&nbsp; <br /> SARMIENTO!
+          LUIS&nbsp; <br /> SARMIENTO
         </div>
         <div className="hoz-container">
           <div className="lines" />
