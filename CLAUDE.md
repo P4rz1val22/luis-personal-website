@@ -17,7 +17,15 @@ There is no test framework in this project — `npm run lint` is the only automa
 
 Luis Sarmiento's personal site: a static React 18 + Vite SPA, plain JSX (no TypeScript), with `react-router-dom` as the only runtime dependency beyond React. All content is hardcoded in the components; there is no CMS, API, or data layer.
 
-Deployment is `.github/workflows/deploy.yml`: any push to `main` builds and publishes `dist/` to GitHub Pages, served at the `luissarmiento.me` custom domain (`CNAME`). The `gh-pages` devDependency and the Vercel URL in `package.json`'s `homepage` field are leftovers and are not used by the deploy path.
+Deployment is `.github/workflows/deploy.yml`: any push to `main` builds and publishes `dist/` to GitHub Pages. The `gh-pages` devDependency is a leftover and is not used by the deploy path.
+
+**The live site is `https://p4rz1val22.github.io/luis-personal-website/`, not `luissarmiento.me`.** The root `CNAME` file is inert: Vite only copies `public/` into `dist/`, and the workflow uploads `./dist`, so the CNAME never reaches Pages — the API reports `cname: none`. Independently, `luissarmiento.me` is currently NXDOMAIN. Both have to be fixed together, and **in this order**, or the site goes down:
+
+1. Point DNS at GitHub Pages and confirm it resolves.
+2. Move `CNAME` into `public/` so it ships in the build.
+3. Change `base` in `vite.config.js` from `/luis-personal-website/` to `/`, because a custom domain serves the project at the domain root rather than under the repo path.
+
+Doing step 2 before step 1 is the dangerous one: once Pages has a custom domain set, it redirects the `github.io` URL to a domain that does not resolve.
 
 ## Architecture
 
