@@ -13,7 +13,9 @@ const Jukebox = () => {
     };
 
     // Current index constant
-    const [currentIndex, setCurrentIndex] = useState(1);
+    // Start on the middle album so the carousel opens visually balanced,
+    // whatever the project count happens to be.
+    const [currentIndex, setCurrentIndex] = useState(Math.floor(projects.length / 2));
 
     const currentProject = projects[currentIndex];
 
