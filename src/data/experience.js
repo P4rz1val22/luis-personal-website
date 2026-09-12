@@ -10,6 +10,11 @@
 // explicit rather than auto-packed so the rack keeps its deliberate,
 // slightly lopsided look as roles are added.
 //
+// `kind` labels what the role actually was — Co-op, Campus, Internship —
+// and renders as a pill next to the title. Generate in particular is a
+// student-run studio rather than paid employment, and the pill keeps that
+// visible instead of leaving it to be inferred from a bullet.
+//
 // Entries are reverse-chronological; the first is selected by default.
 // Rows are staggered between the two columns so no two cards sit level
 // with each other, which is what gives the rack its lopsided look.
@@ -21,6 +26,10 @@ export const SLOTS_PER_COLUMN = 7;
 export const experiences = [
     {
         company: 'Smartleaf',
+        title: 'Software Engineer',
+        kind: 'Co-op',
+        dates: 'Jan – Jul 2026',
+        location: 'Boston, MA',
         column: 0,
         row: 0,
         bullets: [
@@ -31,6 +40,10 @@ export const experiences = [
     },
     {
         company: 'Generate',
+        title: 'Software Engineer',
+        kind: 'Campus',
+        dates: 'Sep 2025 – Present',
+        location: 'Boston, MA',
         column: 1,
         row: 1,
         bullets: [
@@ -41,6 +54,10 @@ export const experiences = [
     },
     {
         company: 'Verizon',
+        title: 'Software Engineer',
+        kind: 'Co-op',
+        dates: 'Jan – Jul 2025',
+        location: 'Boston, MA',
         column: 0,
         row: 2,
         bullets: [
@@ -51,6 +68,9 @@ export const experiences = [
     },
     {
         company: 'Biskit Media',
+        title: 'Front-End Developer',
+        kind: 'Start-up',
+        dates: 'Nov 2023 – 2024',
         column: 1,
         row: 3,
         bullets: [
@@ -61,6 +81,10 @@ export const experiences = [
     },
     {
         company: 'Silice',
+        title: 'Quality Assurance Tester',
+        kind: 'Internship',
+        dates: 'Jul – Aug 2022',
+        location: 'Panama City',
         column: 0,
         row: 4,
         bullets: [
@@ -71,6 +95,10 @@ export const experiences = [
     },
     {
         company: 'UNAIDS',
+        title: 'Communications Intern',
+        kind: 'Internship',
+        dates: 'Aug – Oct 2021',
+        location: 'Panama City',
         column: 1,
         row: 5,
         bullets: [

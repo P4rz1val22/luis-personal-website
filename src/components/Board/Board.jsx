@@ -8,7 +8,9 @@ const noteStyles = ['first', 'second', 'third'];
 
 // The board component that contains the description of 
 // the work experiences I carried out. [Work section].
-const Board = ({ bullets }) => {
+const Board = ({ experience }) => {
+
+    const { title, kind, dates, location, bullets } = experience;
 
     // State to manage the temporary style change
     const [divStyle, setDivStyle] = useState({ opacity: 0, marginTop: '3vw' });
@@ -30,22 +32,39 @@ const Board = ({ bullets }) => {
         }, 300);
 
         return () => clearTimeout(timeout);
-    }, [bullets]);
+    }, [experience]);
 
     // Board component returned
     return (
         <div className='board' style={divStyle}>
-            {bullets.map((bullet, index) => (
-                <div key={bullet} className={`note ${noteStyles[index % noteStyles.length]}`}>
-                    {bullet}
+            <div className='board-header'>
+                <div className='board-role'>
+                    {title}
+                    <span className='board-kind'>{kind}</span>
                 </div>
-            ))}
+                <div className='board-meta'>
+                    {dates}{location ? ` · ${location}` : ''}
+                </div>
+            </div>
+            <div className='board-notes'>
+                {bullets.map((bullet, index) => (
+                    <div key={bullet} className={`note ${noteStyles[index % noteStyles.length]}`}>
+                        {bullet}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
 
 Board.propTypes = {
-    bullets: PropTypes.arrayOf(PropTypes.string).isRequired,
+    experience: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        kind: PropTypes.string,
+        dates: PropTypes.string.isRequired,
+        location: PropTypes.string,
+        bullets: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
 };
 
 export default Board;

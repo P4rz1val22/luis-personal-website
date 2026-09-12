@@ -76,7 +76,7 @@ const Work = () => {
                     {!isMobile && <Clock />}
                     {renderColumn(1)}
                 </div>
-                <Board bullets={experiences[cardNo].bullets} />
+                <Board experience={experiences[cardNo]} />
 
                 <div className="hoz-container heading">
                     <div className='sideLines Orange' />

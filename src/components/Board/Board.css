@@ -1,9 +1,9 @@
 .board {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
     width: 80vw;
-    height: 40vw;
+    height: 46vw;
     margin-top: 2vw;
     margin-bottom: 5vw;
     background-color: var(--slate);
@@ -13,6 +13,58 @@
     position: relative;
     transition: .3s ease-out;
     box-shadow: inset .5vw .5vw var(--ink);
+}
+
+/* A printed card pinned above the notes, carrying the things the punch
+   card has no room for: what the role actually was, and when. */
+.board-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3vw;
+    background-color: var(--cream);
+    color: var(--ink);
+    padding: 1vw 3vw;
+    border-radius: 0.3vw;
+    margin-bottom: 1.5vw;
+    box-shadow: 0.25vw 0.35vw 0 #00000038;
+    transform: rotate(-0.6deg);
+}
+
+.board-role {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    font-family: Futura, sans-serif;
+    font-size: 2.4vw;
+    line-height: 1;
+}
+
+/* Co-op / Campus / Internship. Small on purpose — it qualifies the title
+   rather than competing with it. */
+.board-kind {
+    background-color: var(--teal-deep);
+    color: var(--paper);
+    font-size: 1.1vw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3vw 0.8vw;
+    border-radius: 0.2vw;
+}
+
+.board-meta {
+    font-family: Futura, sans-serif;
+    font-size: 1.4vw;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+.board-notes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }
 
 .note {
