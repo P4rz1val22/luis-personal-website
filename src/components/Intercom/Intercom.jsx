@@ -78,8 +78,7 @@ const Intercom = () => {
                 </div>
                 <audio ref={audioRef2} src="./assets/Sounds/WheelSound.mov" />
             </div>
-            <div className='click-me-arrow'></div>
-            <div className='click-me-title'>Click!</div>
+            <div className='click-me-note'>Click!</div>
         </div>
     );
 }

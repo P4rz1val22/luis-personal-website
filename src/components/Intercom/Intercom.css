@@ -152,16 +152,45 @@
     left: 0;
 }
 
-.click-me-arrow {
-    border-top: 0.5vw solid transparent;
-    border-bottom: 0.5vw solid transparent;
-    border-right: 1vw solid black;
-    transform: translate(-9vw, 0) scale(2);
+/* A sticky note pinned next to the intercom, telling you the thing is
+   interactive. Rotated and shadowed so it reads as stuck on rather than
+   drawn in, and squared off at the bottom-right where the corner curls. */
+.click-me-note {
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    transform: translate(-8vw, -1vw) rotate(-5deg);
+    background-color: #e1e293;
+    color: var(--ink);
+    font-family: Futura, sans-serif;
+    font-size: 2.6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0.3vw 0.45vw 0 #00000038;
+    user-select: none;
+    cursor: default;
 }
 
-.click-me-title {
-    transform: translate(-8vw, 0);
-    font-size: 3vw;
-    font-family: Futura, sans-serif;
-    color: black;
+/* The curled corner: a wedge of the board colour cutting the note, with a
+   lighter triangle over it for the lifted underside of the paper. */
+.click-me-note::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-width: 0 0 1.6vw 1.6vw;
+    border-style: solid;
+    border-color: transparent transparent #0000002e transparent;
+}
+
+.click-me-note::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-width: 1.6vw 1.6vw 0 0;
+    border-style: solid;
+    border-color: #eff0b4 transparent transparent transparent;
+    filter: drop-shadow(-0.1vw -0.1vw 0.1vw #00000038);
 }
