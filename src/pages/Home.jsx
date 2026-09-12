@@ -19,15 +19,18 @@ const Home = () => {
         <div className="hoz-container">
           <div className={`text-box " ${isMobile ? "big" : ""}`}>
             <h2>Hello there!</h2> My name is <b>Luis Enrique Sarmiento</b>, a
-            Computer Science student at Northeastern University, currently based
-            in Boston, MA. Originally from Venezuela and completing my studies
-            in Panama, my unique journey has been fueled by a passion for tech,
-            problem-solving, and innovation.
+            senior Computer Science student at Northeastern University,
+            concentrating in Artificial Intelligence and minoring in Game
+            Design, currently based in Boston, MA. Originally from Venezuela and
+            completing my studies in Panama, my unique journey has been fueled
+            by a passion for tech, problem-solving, and innovation.
             <br />
             <br />
-            Since I was young, I became entranced with the impact technology had
-            in the world, and became fascinated with its ability to bring forth
-            social change and improve the lives of others.
+            I’m always looking for opportunities to collaborate with others
+            and learn about the growing world of tech. As a member of the
+            Northeastern Student Government, I’m committed to helping voice
+            the concerns of my fellow peers and engineer solutions wherever I
+            can.
           </div>
           <img
             className={` ${!isMobile ? "box" : "hide"}`}
@@ -42,17 +45,18 @@ const Home = () => {
             loading="lazy"
           />
           <div className={`text-box " ${isMobile ? "big" : ""}`}>
-            I&apos;m dedicated to using my skills to create tangible, positive
-            change. Whether it&apos;s through coding, leading or collaborating with
-            others, I&apos;m determined to push the boundaries of innovation and
-            create sustainable, ethical solutions to the problems of today and
-            tomorrow.
+            Throughout my academic journey so far I’ve worked with a lot of
+            languages and frameworks, and used each one to sharpen what I
+            actually want to do within software development. That has given me
+            experience at both ends of the stack — Rails and Go on the back
+            end, React and TypeScript on the front — along with a genuine
+            interest in machine learning and its applications in everyday life.
             <br />
             <br />
-            When I&apos;m not buried in code, you might find me exploring the vibrant
-            tech scene in Boston, travelling abroad or brainstorming new ideas
-            for my next project. I&apos;m excited about the future and eager to see
-            where my journey in tech will take me next.
+            I want to keep growing through professional experience and projects,
+            and to stay involved around campus while I do it. I love making
+            connections and helping people out wherever I can, so feel free to
+            reach out.
           </div>
         </div>
       </div>
