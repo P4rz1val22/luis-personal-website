@@ -31,7 +31,6 @@
     z-index: 2;
 }
 
-
 .intercom-speaker {
     display: flex;
     flex-direction: horizontal;
@@ -154,7 +153,8 @@
 
 /* A sticky note pinned next to the intercom, telling you the thing is
    interactive. Rotated and shadowed so it reads as stuck on rather than
-   drawn in, and squared off at the bottom-right where the corner curls. */
+   drawn in. No folded corner: a single sheet on a wall has nothing behind
+   it to peek out, and the fold read as a second note rather than a curl. */
 .click-me-note {
     position: relative;
     width: 10vw;
@@ -172,25 +172,3 @@
     cursor: default;
 }
 
-/* The curled corner: a wedge of the board colour cutting the note, with a
-   lighter triangle over it for the lifted underside of the paper. */
-.click-me-note::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border-width: 0 0 1.6vw 1.6vw;
-    border-style: solid;
-    border-color: transparent transparent #0000002e transparent;
-}
-
-.click-me-note::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border-width: 1.6vw 1.6vw 0 0;
-    border-style: solid;
-    border-color: #eff0b4 transparent transparent transparent;
-    filter: drop-shadow(-0.1vw -0.1vw 0.1vw #00000038);
-}
