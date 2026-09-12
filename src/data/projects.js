@@ -4,6 +4,10 @@
 // `repo` is optional — leave it out and the "Repo" link is hidden rather
 // than rendering a dead link.
 //
+// Keep `description` under roughly 500 characters. The panel it renders
+// into is a fixed 35vw tall and silently clips anything longer — there is
+// no scrollbar and no ellipsis to warn you.
+//
 // `labelColor` is the record label's colour and `glyph` picks its mark from
 // the set in DiscGlyph.jsx. Both are optional: a project with no glyph falls
 // back to a monogram of its first letter, and one with no colour gets the
@@ -56,7 +60,7 @@ export const projects = [
         labelColor: 'var(--red)',
         glyph: 'layers',
         description:
-            'This one started as a Go monolith, became four services through the Strangler Fig pattern, then grew a Kafka event backbone. Notification email moved out of the request path into a durable consumer group, so writing a task no longer depends on mail delivery. A transactional outbox commits the task and its event together, consumers deduplicate on event ID because Kafka delivers at least once, and anything unprocessable routes to a dead-letter topic byte-for-byte intact. Covered by 171 unit tests and an automated test that kills the broker mid-flight and asserts the backlog drains on its own. It runs locally under Docker Compose — built and tested, not deployed.',
+            'Started as a Go monolith, became four services through the Strangler Fig pattern, then grew a Kafka event backbone. Notification email moved out of the request path, so writing a task no longer depends on mail delivery. A transactional outbox commits the task and its event together, and consumers deduplicate because Kafka delivers at least once. Covered by 171 unit tests plus one that kills the broker mid-flight and checks the backlog drains unaided. Built and tested, not deployed.',
         repo: 'https://github.com/P4rz1val22/task-management-microservices',
     },
 ];
