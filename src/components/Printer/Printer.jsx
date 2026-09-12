@@ -1,29 +1,12 @@
 import './Printer.css';
 import { useState, useRef } from 'react';
+import { documents } from '../../data/documents';
 
 // The Printer component that enables users to access important documents. i.e. my Resume, Letters of recommendation. [Home section]
 const Printer = () => {
 
     // Reference to button click audio.
     const audioRef = useRef(null);
-
-    // Available texts and links. Adding a new one is easy. 
-    // Add the text content to be displayed on the screen to the
-    // "texts" array & add the link to the "links" array in the 
-    // same position.
-    const texts = [
-        'Resume',
-        'L. of Rec #1',
-        'L. of Rec #2',
-        'L. of Rec # 3'
-    ];
-
-    const links = [
-        './assets/PDFs/Resume.pdf',
-        './assets/PDFs/LOR1.pdf',
-        './assets/PDFs/LOR2.pdf',
-        './assets/PDFs/LOR3.pdf'
-    ];
 
     // Current index constant
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,14 +18,13 @@ const Printer = () => {
     // printing (circular) buttons
     const handleClick = (amount) => {
         let nextIndex = currentIndex + amount;
-        console.log(currentIndex)
 
-        if (nextIndex > texts.length - 1) {
+        if (nextIndex > documents.length - 1) {
             nextIndex = 0;
         }
 
         if (nextIndex < 0) {
-            nextIndex = texts.length - 1;
+            nextIndex = documents.length - 1;
         }
 
         if (audioRef.current) {
@@ -92,16 +74,16 @@ const Printer = () => {
                     <div onClick={() => handleClick(1)} className={`arrow opposite ${!isHoverEnabled ? 'no-hover' : ''}`} />
 
                 </div>
-                <a onClick={() => handleClick(0)} href={links[currentIndex]} target="_blank" rel="noopener noreferrer" className='print-button' />
+                <a onClick={() => handleClick(0)} href={documents[currentIndex].href} target="_blank" rel="noopener noreferrer" className='print-button' />
                 <audio ref={audioRef} src="./assets/Sounds/ClickSound.mov" />
             </div>
             <div className='printerScreen' >
                 <div className='typed-text'>
-                    {texts[currentIndex]}
+                    {documents[currentIndex].label}
                 </div>
             </div>
             <div className='printerOutput' />
-            <a onMouseEnter={handleMouseEnter} className='printer-paper' target="_blank" rel="noopener noreferrer" href={links[currentIndex]} />
+            <a onMouseEnter={handleMouseEnter} className='printer-paper' target="_blank" rel="noopener noreferrer" href={documents[currentIndex].href} />
 
         </div>
     );

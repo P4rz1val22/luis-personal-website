@@ -3,6 +3,7 @@ import Clock from "../components/Clock/Clock.jsx";
 import Board from "../components/Board/Board.jsx";
 import Intercom from "../components/Intercom/Intercom.jsx";
 import { useState, useEffect } from "react";
+import { experiences, SLOTS_PER_COLUMN } from "../data/experience";
 
 const Work = () => {
 
@@ -12,7 +13,6 @@ const Work = () => {
 
     const handleClick = (number) => {
         setCardNo(number);
-        console.log(cardNo);
     };
 
     // State to manage the temporary style change
@@ -23,8 +23,7 @@ const Work = () => {
     });
 
     useEffect(() => {
-        const regDivStyle = {}
-        setDivStyle({ regDivStyle });
+        setDivStyle({});
     }, []);
 
     const clickedStyle = {
@@ -35,6 +34,32 @@ const Work = () => {
     };
 
     const defaultStyle = {};
+
+    // Builds one column of the punch-card rack: mostly empty slots, with a
+    // card dropped into whichever rows the data claims.
+    const renderColumn = (column) => (
+        <div className='slot-col'>
+            {Array.from({ length: SLOTS_PER_COLUMN }, (_, row) => {
+                const index = experiences.findIndex(
+                    (experience) => experience.column === column && experience.row === row
+                );
+
+                return (
+                    <div className='slot' key={row}>
+                        {index !== -1 && (
+                            <div
+                                className='card'
+                                style={cardNo === index ? clickedStyle : defaultStyle}
+                                onClick={() => handleClick(index)}
+                            >
+                                {experiences[index].company}
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </div>
+    );
 
     return (
         <div style={divStyle} className='section'>
@@ -47,39 +72,11 @@ const Work = () => {
             </div>
             <div className="vert-container">
                 <div className='punch-clock-container' >
-                    <div className='slot-col'>
-                        <div className='slot' />
-                        <div className='slot' />
-                        <div className='slot'>
-                            <div className='card' style={cardNo === 0 ? clickedStyle : defaultStyle} onClick={() => handleClick(0)}>
-                                UNAIDS
-                            </div>
-                        </div>
-                        <div className='slot' />
-                        <div className='slot' />
-                        <div className='slot' />
-                        <div className='slot' />
-                    </div>
+                    {renderColumn(0)}
                     {!isMobile && <Clock />}
-                    <div className='slot-col'>
-                        <div className='slot' />
-                        <div className='slot' />
-                        <div className='slot'>
-                            <div className='card' style={cardNo === 1 ? clickedStyle : defaultStyle} onClick={() => handleClick(1)}>
-                                Silice
-                            </div>
-                        </div>
-                        <div className='slot' />
-                        <div className='slot' />
-                        <div className='slot'>
-                            <div className='card' style={cardNo === 2 ? clickedStyle : defaultStyle} onClick={() => handleClick(2)}>
-                                Biskit Media
-                            </div>
-                        </div>
-                        <div className='slot' />
-                    </div>
+                    {renderColumn(1)}
                 </div>
-                <Board number={cardNo} />
+                <Board bullets={experiences[cardNo].bullets} />
 
                 <div className="hoz-container heading">
                     <div className='sideLines Orange' />
