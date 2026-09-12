@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from './components/NavbarComp/Navbar';
+import Hint from './components/Hint/Hint';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import Skills from './pages/Skills';
@@ -21,6 +22,7 @@ function App() {
             <Route exact path="/projects" element={<Projects />} />
           </Routes>
         </div>
+        <Hint />
       </div>
     </Router>
   );

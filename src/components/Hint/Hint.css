@@ -1,0 +1,75 @@
+/* A card pinned to the corner of the screen, telling visitors the office is
+   interactive. Fixed rather than in flow, because the invitation has to be
+   there whichever page you land on and wherever you have scrolled to. */
+.hint {
+    position: fixed;
+    right: 2vw;
+    bottom: 2.5vw;
+    z-index: 10;
+    width: 17vw;
+    padding: 2.2vw 1.6vw 1.4vw;
+    background-color: var(--cream);
+    color: var(--ink);
+    border-radius: 0.3vw;
+    transform: rotate(1.5deg);
+    box-shadow: 0.3vw 0.45vw 0 #00000047;
+    font-family: Futura, sans-serif;
+    text-align: left;
+    user-select: none;
+    cursor: default;
+}
+
+/* The thumbtack holding it up. Off-centre highlight so it reads as a dome
+   rather than a flat dot. */
+.hint::before {
+    content: '';
+    position: absolute;
+    top: -0.7vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.7vw;
+    height: 1.7vw;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #ff9a86, var(--red) 62%);
+    box-shadow: 0 0.25vw 0.35vw #00000059;
+}
+
+.hint-title {
+    font-size: 1.5vw;
+    letter-spacing: 0.16em;
+    line-height: 1;
+}
+
+.hint-body {
+    font-size: 1.05vw;
+    line-height: 1.4;
+    margin-top: 0.6vw;
+    opacity: 0.78;
+}
+
+/* Narrow screens: the card keeps its corner but takes a bigger share of the
+   width, since 17vw of text is unreadable on a phone. A media query rather
+   than the isMobile check the rest of the site uses, so it responds to a
+   resize or a rotation. */
+@media (max-width: 768px) {
+    .hint {
+        width: 42vw;
+        padding: 5vw 4vw 3.5vw;
+        border-radius: 1vw;
+    }
+
+    .hint::before {
+        top: -1.8vw;
+        width: 4.2vw;
+        height: 4.2vw;
+    }
+
+    .hint-title {
+        font-size: 3.6vw;
+    }
+
+    .hint-body {
+        font-size: 2.6vw;
+        margin-top: 1.4vw;
+    }
+}
