@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     width: 80vw;
-    height: 46vw;
+    height: 52vw;
     margin-top: 2vw;
     margin-bottom: 5vw;
     background-color: var(--slate);
@@ -26,7 +26,11 @@
     color: var(--ink);
     padding: 1vw 3vw;
     border-radius: 0.3vw;
-    margin-bottom: 1.5vw;
+    /* The middle note is shifted up 5vw by `position: relative`, which
+       moves it visually without reserving any layout space — so the gap
+       below the header has to be wide enough to absorb that on its own,
+       or the note rides up over the title. */
+    margin-bottom: 6vw;
     box-shadow: 0.25vw 0.35vw 0 #00000038;
     transform: rotate(-0.6deg);
 }
