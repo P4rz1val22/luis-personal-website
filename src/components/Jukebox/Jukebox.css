@@ -12,6 +12,19 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
+    /* Three layers make the vinyl: fine groove lines, the wider gaps that
+       separate tracks on a real pressing, and an off-centre sheen so the
+       surface catches light as it turns. Only readable in motion, which is
+       the point — a still disc barely shows them. */
+    background-image:
+        repeating-radial-gradient(circle at 50% 50%, #ffffff0d 0 0.1vw, #0000 0.1vw 0.42vw),
+        repeating-radial-gradient(circle at 50% 50%,
+            #0000 0 5.7vw,
+            #ffffff12 5.7vw 5.88vw,
+            #0000 5.88vw 9vw,
+            #ffffff12 9vw 9.18vw,
+            #0000 9.18vw 15vw),
+        radial-gradient(circle at 32% 28%, #ffffff1a 0, #0000 58%);
 }
 
 .jukebox {
@@ -28,31 +41,90 @@
     }
 }
 
-.disc::before {
-    display: flex;
-    content: attr(data-content);
-    width: 6.07vw;
-    aspect-ratio: 1 / 1;
-    background-color: rgb(255, 105, 41);
-    border-radius: 50%;
+/* The label is a real element rather than a pseudo-element, because it has
+   to hold an SVG and to counter-rotate independently of the disc. Offset by
+   margin rather than translate so its transform is free for the rotation. */
+.disc-label {
     position: absolute;
-    right: 10vw;
-    top: 10vw;
-    line-height: 1vw;
+    left: 50%;
+    top: 50%;
+    width: 10vw;
+    height: 10vw;
+    margin: -5vw 0 0 -5vw;
+    background-color: var(--label-color, var(--orange-deep));
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: top;
-    border: solid 2vw rgb(255, 105, 41);
+    z-index: 1;
 }
 
-.disc::after {
-    content: '';
+.disc-glyph {
+    width: 5.5vw;
+    height: 5.5vw;
+    display: block;
+}
+
+.disc-glyph path,
+.disc-glyph rect,
+.disc-glyph line,
+.disc-glyph circle,
+.disc-glyph polyline {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.disc-glyph .solid {
+    fill: currentColor;
+    stroke: none;
+}
+
+/* Fallback when a project has no glyph assigned. */
+.disc-mono {
+    font-family: Futura, sans-serif;
+    font-size: 4.4vw;
+    line-height: 1;
+}
+
+/* Sits above the label, so it reads as a hole punched through the artwork
+   the way it does on a real pressing. */
+.disc-spindle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
     width: 1vw;
-    aspect-ratio: 1 / 1;
+    height: 1vw;
+    margin: -0.5vw 0 0 -0.5vw;
     background-color: rgb(16, 14, 14);
     border-radius: 50%;
-    position: absolute;
-    right: 14.5vw;
-    top: 14.5vw;
+    z-index: 2;
+}
+
+/* The disc spins via an inline style once it reaches the turntable. The
+   label turns the opposite way at the same rate, so the mark stays upright
+   and legible instead of tumbling with the record. */
+.disc.spinning .disc-label {
+    animation: counter-rotation 2s infinite linear;
+}
+
+@keyframes counter-rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-359deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .disc.spinning .disc-label {
+        animation: none;
+    }
 }
 
 

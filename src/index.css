@@ -23,6 +23,7 @@
     --red: #b6220c;             /* jukebox red */
     --wood: #98541f;            /* pegboard frame */
     --wood-dark: #633313;       /* pegboard frame, deep */
+    --forest: #1f6b4a;          /* deep green, record labels */
 }
 
 :root {
