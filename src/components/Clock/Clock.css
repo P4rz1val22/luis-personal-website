@@ -12,9 +12,9 @@
     display: flex;
     width: 25vw;
     height: 30vw;
-    background-color: #7697a0;
-    border: solid .3vw #17616e;
-    box-shadow: 0 -2vw 0 #17616e;
+    background-color: var(--slate);
+    border: solid .3vw var(--teal-deep);
+    box-shadow: 0 -2vw 0 var(--teal-deep);
     border-radius: 4vw;
     justify-content: center;
     align-items: end;
@@ -26,7 +26,7 @@
     width: 15vw;
     aspect-ratio: 1 / 1;
     background-color: white;
-    border: solid 0.3vw #17616e;
+    border: solid 0.3vw var(--teal-deep);
     border-radius: 50%;
     position: absolute;
     top: 1vw;
@@ -61,14 +61,14 @@
 }
 
 .second-hand {
-    background-color: #fd8916;
+    background-color: var(--orange);
 }
 
 .dot {
     width: 8vw;
     height: 4vw;
     top: -8vw;
-    background-color: #17616e;
+    background-color: var(--teal-deep);
     position: relative;
     border-radius: 1vw;
     box-shadow: inset .5vw .5vw #0f3f48;

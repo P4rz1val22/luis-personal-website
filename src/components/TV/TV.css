@@ -1,12 +1,12 @@
 .tv {
     display: flex;
     overflow: visible;
-    background-color: light-dark(#FE8916, #0f0f5c);
+    background-color: light-dark(var(--orange), #0f0f5c);
     width: 100%;
     aspect-ratio: 2 / 1;
     border-radius: 0 0 4vw 4vw;
     padding: -10%;
-    box-shadow: 0 1vw 0 light-dark(#E15121, #1a1a6d);
+    box-shadow: 0 1vw 0 light-dark(var(--orange-deep), #1a1a6d);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -25,8 +25,8 @@
     line-height: 13vw;
     margin-top: 1vw;
     color: white;
-    text-shadow: .5vw 0px #1c1f33;
-    box-shadow: inset 0.5vw 0.5vw 0 1vw #1c1f339c;
+    text-shadow: .5vw 0px var(--ink);
+    box-shadow: inset 0.5vw 0.5vw 0 1vw #1319349c;
     width: 95%;
     height: 70%;
     border-radius: 1vw;
@@ -47,7 +47,7 @@
 
 .static {
     color: transparent;
-    text-shadow: .5vw 0px #1c1f3300;
+    text-shadow: .5vw 0px #13193400;
     background: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHkxenFoNzRrNjA5YWR6c3lrcXd5d2RtOWJpb3I3Z2M5OG52bHhhNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Yqn9tE2E00k4U/giphy.gif') center center / cover no-repeat !important;
     animation: staticEffect 0.5s;
 }
@@ -66,13 +66,13 @@
 .screenButton {
     transition: ease-in 0.1s;
     background-color: transparent;
-    border: 1vw solid #E8E2C9;
+    border: 1vw solid var(--cream);
     width: 8vw;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     margin: 1vw;
     position: relative;
-    box-shadow: 0 0.6vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.6vw 0 light-dark(var(--orange-deep), var(--navy));
     cursor: pointer;
 }
 
@@ -81,66 +81,66 @@
     width: 6vw;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    background-color: #E8E2C9;
+    background-color: var(--cream);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0.6vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.6vw 0 light-dark(var(--orange-deep), var(--navy));
     transition: ease-in 0.1s;
 }
 
 .screenButton:hover {
     transform: translateY(0.3vw);
-    box-shadow: 0 0.3vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.3vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 .screenButton:hover::before {
-    box-shadow: 0 0.3vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.3vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 .screenNoHover:hover {
     transform: translateY(0.5vw);
-    box-shadow: 0 0vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 .screenNoHover:hover::before {
-    box-shadow: 0 0vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 
 .lines {
-    background-color: #E8E2C9;
+    background-color: var(--cream);
     width: 20vw;
     height: 2vw;
     border-radius: 0 2vw 2vw 0;
-    box-shadow: 0 0.4vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.4vw 0 light-dark(var(--orange-deep), var(--navy));
     position: relative;
     margin-top: 2vw;
 }
 
 .lines::before {
     content: '';
-    background-color: #E8E2C9;
+    background-color: var(--cream);
     width: 25vw;
     height: 2vw;
     border-radius: 0 2vw 2vw 0;
     position: absolute;
     top: 3.7vw;
     transform: translate(-40%, -50%);
-    box-shadow: 0 0.4vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.4vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 .lines::after {
     content: '';
-    background-color: #E8E2C9;
+    background-color: var(--cream);
     width: 20vw;
     height: 2vw;
     border-radius: 0 2vw 2vw 0;
     position: absolute;
     top: 6.4vw;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0.4vw 0 light-dark(#E15121, #26269d);
+    box-shadow: 0 0.4vw 0 light-dark(var(--orange-deep), var(--navy));
 }
 
 .Reverse {

@@ -7,8 +7,8 @@
     background: repeating-linear-gradient(-45deg,
             #c1541e,
             #c1541e 10px,
-            #a34316 10px,
-            #a34316 20px);
+            var(--orange-shadow) 10px,
+            var(--orange-shadow) 20px);
     margin: 5vw;
     margin-top: 0;
     margin-bottom: 2vw;

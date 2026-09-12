@@ -30,7 +30,7 @@
 }
 
 .circle {
-    background-color: #E15121;
+    background-color: var(--orange-deep);
     width: 20vw;
     aspect-ratio: 1 / 1;
     border-radius: 50%;

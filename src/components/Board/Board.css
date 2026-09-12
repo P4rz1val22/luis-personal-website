@@ -6,13 +6,13 @@
     height: 40vw;
     margin-top: 2vw;
     margin-bottom: 5vw;
-    background-color: #7697a0;
-    border: solid #173b61 1vw;
+    background-color: var(--slate);
+    border: solid var(--slate-deep) 1vw;
     border-radius: 3vw;
     align-items: center;
     position: relative;
     transition: .3s ease-out;
-    box-shadow: inset .5vw .5vw #0f1e2e;
+    box-shadow: inset .5vw .5vw var(--ink);
 }
 
 .note {
