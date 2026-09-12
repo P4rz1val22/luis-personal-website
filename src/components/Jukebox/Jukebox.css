@@ -69,7 +69,7 @@
     width: 100%;
     position: absolute;
     z-index: 1;
-    --disc-offset: calc(var(--album-slot) * var(--disc-shift, 0));
+    --disc-offset: calc(var(--album-slot) * var(--disc-shift, 0) * var(--disc-shift-gain));
     transform: translateX(var(--disc-offset));
     transition: transform .35s ease-in-out;
 }
@@ -78,11 +78,20 @@
     /* Carousel geometry, in one place. The disc's origin is derived from
        these so it lines up with whichever album is selected — if a spine
        width changes here, the disc follows without a JS edit. */
-    --album-spine: 1.5vw;
-    --album-gap: 1vw;
+    --album-spine: 3vw;
+    --album-gap: 1.5vw;
     --album-slot: calc(var(--album-spine) + var(--album-gap));
-    --album-center: 40vw;
+    --album-center: 38vw;
     --album-center-gap: 2vw;
+
+    /* The disc's travel is exaggerated past the literal album position.
+       Geometrically the selected sleeve only moves +/-6.25vw across six
+       projects, because the unselected spines are slivers — true, but too
+       small to read as "it came out of THAT one". Gain of 1 is the honest
+       offset; higher spreads it out. Widening the spines made the real
+       offset large enough (+/-11.25vw at six projects) that this is back
+       to 1 — the travel you see is the geometry, not a fudge. */
+    --disc-shift-gain: 1;
 
     display: flex;
     flex-direction: column;
@@ -185,7 +194,7 @@
    expand inside a stationary frame, so the arrows never move.
    60vw + the two 18vw arrow columns = 96vw, just inside the viewport. */
 .carousel {
-    width: 60vw;
+    width: 64vw;
     height: 40vw;
     display: flex;
     flex-direction: row;
@@ -203,7 +212,7 @@
        carousel, but never below a clickable sliver. At six projects
        there is still slack; this only engages past about ten. */
     flex: 0 1 auto;
-    min-width: 0.8vw;
+    min-width: 1.5vw;
     height: 40vw;
     background-color: black;
     color: rgba(255, 228, 196, 0);
@@ -214,7 +223,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("/assets/Images/Mail-Icon.png");
+    background-image: linear-gradient(90deg, #ffffff1f 0 12%, #0000 12% 78%, #00000066 78%);
     cursor: pointer;
 }
 
@@ -226,10 +235,10 @@
 
 .swipe {
     position: relative;
-    width: 14vw;
-    height: 14vw;
+    width: 12vw;
+    height: 12vw;
     background-color: black;
-    margin: 2vw;
+    margin: 1.5vw;
     transition: .2s ease-in-out;
     clip-path: polygon(0 0, 50% 50%, 0 100%);
     cursor: pointer;
