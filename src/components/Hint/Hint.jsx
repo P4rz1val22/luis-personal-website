@@ -7,10 +7,9 @@ import './Hint.css';
 const Hint = () => {
     return (
         <div className='hint'>
-            <div className='hint-title'>CLICK AROUND</div>
+            <div className='hint-title'>TIP</div>
             <div className='hint-body'>
-                Most of this office works. Try the TV dial, the printer, the
-                punch cards and the records.
+                Most of this office works, click around to learn more!
             </div>
         </div>
     );

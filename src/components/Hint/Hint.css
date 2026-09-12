@@ -19,8 +19,9 @@
     cursor: default;
 }
 
-/* The thumbtack holding it up. Off-centre highlight so it reads as a dome
-   rather than a flat dot. */
+/* The thumbtack holding it up. Flat fill, no gradient or drop shadow — the
+   rest of the site draws its objects as solid shapes, and a shaded dome
+   here looked borrowed from somewhere else. */
 .hint::before {
     content: '';
     position: absolute;
@@ -30,8 +31,7 @@
     width: 1.7vw;
     height: 1.7vw;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 32%, #ff9a86, var(--red) 62%);
-    box-shadow: 0 0.25vw 0.35vw #00000059;
+    background-color: var(--red);
 }
 
 .hint-title {
