@@ -71,11 +71,13 @@ const Printer = () => {
             const audio = new Audio('./assets/Sounds/Printer.mov');
             audio.volume = 0.6;
             audio.play();
+
+            // Prevent further playback until the print sound has run its course.
+            setCanPlay(false);
+            setTimeout(() => {
+                setCanPlay(true);
+            }, 1000);
         }
-    };
-
-    const handleMouseLeave = () => {
-
     };
 
     // Returns the Printer component.
@@ -100,7 +102,7 @@ const Printer = () => {
                 </div>
             </div>
             <div className='printerOutput' />
-            <a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='printer-paper' target="_blank" rel="noopener noreferrer" href={links[currentIndex]} />
+            <a onMouseEnter={handleMouseEnter} className='printer-paper' target="_blank" rel="noopener noreferrer" href={links[currentIndex]} />
 
         </div>
     );
