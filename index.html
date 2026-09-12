@@ -13,14 +13,19 @@
   <!-- Open Graph / Twitter. Without these the link renders as a bare grey
        row anywhere it is shared: LinkedIn, Slack, email, application forms.
        og:image must be an absolute URL, so it carries the full Pages host
-       rather than the ./assets path the rest of the app uses. -->
+       rather than the ./assets path the rest of the app uses.
+
+       The -v2 suffix is deliberate. LinkedIn and Slack cache preview images
+       by URL for about a week, so replacing the file in place leaves them
+       serving the old one. If the card is redrawn again, bump the suffix
+       rather than overwriting. -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://p4rz1val22.github.io/luis-personal-website/" />
   <meta property="og:title" content="Luis Sarmiento — Software Engineer" />
   <meta property="og:description"
     content="Software engineer and Computer Science senior at Northeastern University. Co-ops at Smartleaf and Verizon, plus personal projects in Go, TypeScript and Kafka." />
   <meta property="og:image"
-    content="https://p4rz1val22.github.io/luis-personal-website/assets/Images/og-card.png" />
+    content="https://p4rz1val22.github.io/luis-personal-website/assets/Images/og-card-v2.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Luis Sarmiento, Software Engineer, Northeastern University" />
@@ -30,7 +35,7 @@
   <meta name="twitter:description"
     content="Software engineer and Computer Science senior at Northeastern University." />
   <meta name="twitter:image"
-    content="https://p4rz1val22.github.io/luis-personal-website/assets/Images/og-card.png" />
+    content="https://p4rz1val22.github.io/luis-personal-website/assets/Images/og-card-v2.png" />
 </head>
 
 <body>
