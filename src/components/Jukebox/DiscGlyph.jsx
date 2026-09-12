@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
-// Marks for the record labels. Geometric line art on a 28x28 grid, stroked
+// Marks for the record labels. Hard-edged geometric line art on a 28x28
+// grid — square caps, mitred joins, no rounded corners — stroked
 // rather than filled so they sit with Futura instead of fighting it, and
 // drawn in currentColor so the label decides the ink.
 //
@@ -16,13 +17,13 @@ const GLYPHS = {
     ),
     window: (
         <>
-            <rect x="4" y="6" width="20" height="17" rx="2" />
+            <rect x="4" y="6" width="20" height="17" />
             <line x1="4" y1="11" x2="24" y2="11" />
             <circle className="solid" cx="7.5" cy="8.5" r="1" />
         </>
     ),
     chat: (
-        <path d="M4 8 a2 2 0 0 1 2-2 h16 a2 2 0 0 1 2 2 v9 a2 2 0 0 1-2 2 H12 l-5 4 v-4 H6 a2 2 0 0 1-2-2 z" />
+        <path d="M4 6 H24 V19 H12 L7 23 V19 H4 Z" />
     ),
     chart: (
         <>
@@ -34,7 +35,7 @@ const GLYPHS = {
     ),
     pad: (
         <>
-            <rect x="3" y="9" width="22" height="12" rx="5" />
+            <rect x="3" y="9" width="22" height="12" />
             <line x1="8" y1="12" x2="8" y2="18" />
             <line x1="5" y1="15" x2="11" y2="15" />
             <circle className="solid" cx="19" cy="13.5" r="1.5" />

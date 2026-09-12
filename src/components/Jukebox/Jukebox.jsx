@@ -8,10 +8,6 @@ const Jukebox = () => {
 
     const [divStyle, setStyle] = useState({});
     const [divClicked, setClicked] = useState(false);
-
-    // True only while the record is on the turntable and turning. Drives the
-    // label's counter-rotation, which is what keeps the mark upright.
-    const [spinning, setSpinning] = useState(false);
     const defaultStyle = {
     };
 
@@ -40,14 +36,10 @@ const Jukebox = () => {
                 }
                 setTimeout(() => {
                     setStyle(sideStyle);
-                    setSpinning(true);
                 }, 1000);
                 setStyle(clickedStyle);
             }
             else {
-                // Stop the label counter-turning as soon as the record
-                // leaves the platter, not when it finishes travelling back.
-                setSpinning(false);
                 setTimeout(() => {
                     setStyle(defaultStyle);
                 }, 1000);
@@ -112,7 +104,7 @@ const Jukebox = () => {
                     </div>
                     <div className='disc-container'>
                         <div
-                            className={`disc ${spinning ? 'spinning' : ''}`}
+                            className='disc'
                             onClick={() => handleClick(currentIndex)}
                             style={{ ...divStyle, '--label-color': currentProject.labelColor }}
                         >

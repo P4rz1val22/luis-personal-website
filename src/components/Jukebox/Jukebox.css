@@ -74,8 +74,10 @@
     fill: none;
     stroke: currentColor;
     stroke-width: 2.1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    /* Square caps and mitred joins — the marks read as drafted geometry
+       rather than soft icons, which sits better with Futura. */
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
 }
 
 .disc-glyph .solid {
@@ -104,28 +106,9 @@
     z-index: 2;
 }
 
-/* The disc spins via an inline style once it reaches the turntable. The
-   label turns the opposite way at the same rate, so the mark stays upright
-   and legible instead of tumbling with the record. */
-.disc.spinning .disc-label {
-    animation: counter-rotation 2s infinite linear;
-}
-
-@keyframes counter-rotation {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(-359deg);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .disc.spinning .disc-label {
-        animation: none;
-    }
-}
+/* The label is a child of the disc, so it turns with the record on its own
+   — no counter-rotation. The mark spins with the vinyl the way a real
+   label does. */
 
 
 .disc-container {
