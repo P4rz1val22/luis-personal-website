@@ -28,7 +28,7 @@ export const projects = [
         labelColor: 'var(--orange-shadow)',
         glyph: 'window',
         description:
-            'The site you’re on right now. I designed and built it with React and Vite, hand-rolling every piece of the office — the TV, the printer, the punch clock, this jukebox — out of nested divs and CSS rather than images. All of the content lives in data files, so adding a project, a skill or a role is a one-line edit instead of a hunt through the markup. (btw, You Are Here)',
+            'In August 2024, I designed and developed a personal website using HTML, CSS, JavaScript, React, and Vite. I’m hoping this site serves as a hub for showcasing my personal projects and experiences even for projects to come. I also implemented interactive components with React and JavaScript, enhancing user engagement and creating a more dynamic browsing experience. (btw, You Are Here)',
         repo: 'https://github.com/P4rz1val22/luis-personal-website',
     },
     {
