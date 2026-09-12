@@ -69,7 +69,8 @@
     width: 100%;
     position: absolute;
     z-index: 1;
-    transform: translateX(calc(var(--album-slot) * var(--disc-shift, 0)));
+    --disc-offset: calc(var(--album-slot) * var(--disc-shift, 0));
+    transform: translateX(var(--disc-offset));
     transition: transform .35s ease-in-out;
 }
 

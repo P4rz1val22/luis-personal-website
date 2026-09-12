@@ -37,10 +37,14 @@ const Jukebox = () => {
                 opacity: 1
             };
             if (!divClicked) {
+                // The container is shifted so the record emerges from the
+                // selected sleeve, but the turntable does not move. Undo
+                // that shift here so the disc lands on the platter at the
+                // same absolute spot whichever album it came out of.
                 const sideStyle = {
                     animation: 'rotation 2s infinite linear',
                     marginTop: '36vw',
-                    marginLeft: '-60vw',
+                    marginLeft: 'calc(-60vw - var(--disc-offset))',
                     opacity: 1
                 }
                 setTimeout(() => {
