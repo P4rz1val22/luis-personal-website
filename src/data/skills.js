@@ -38,6 +38,4 @@ export const skills = [
     'Code Review',
     'Jira',
     'Figma',
-    'Spanish',
-    'French',
 ];
