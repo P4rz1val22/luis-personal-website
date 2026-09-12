@@ -45,14 +45,23 @@ The components are skeuomorphic renderings of physical office objects, each buil
 | `Board` | Work | Corkboard notes describing the selected job |
 | `Jukebox` | Projects | Carousel + spinning disc for personal projects |
 
-### Content lives in parallel arrays
+### Content lives in `src/data/`
 
-Editing site content means editing index-aligned arrays inside components, not data files. Keep the arrays the same length and in the same order:
+Editing site content means editing a data module, not JSX. The components map over these:
 
-- `Printer.jsx` — `texts[]` / `links[]`
-- `Intercom.jsx` — `links[]` (order must match the four wheel icons in the JSX)
-- `Jukebox.jsx` — `projects[]` / `projectDescs[]` / `repos[]`, **plus** the hardcoded `.album` divs in the carousel JSX, which are written out one per project
-- `Board.jsx` — `texts[]`, an array of exactly three bullet strings per job; `Work.jsx` hardcodes the matching punch-card `div`s and their index
+| Module | Drives |
+|---|---|
+| `src/data/skills.js` | the Skills page grid |
+| `src/data/projects.js` | the Jukebox carousel, disc label, and description |
+| `src/data/experience.js` | the Work page punch-card rack and the Board notes |
+| `src/data/documents.js` | the Printer's document cycle |
+
+Two notes on the shapes:
+
+- `projects.js` entries have an optional `repo`. Omit it and the "Repo" link is hidden rather than rendered dead.
+- `experience.js` entries carry an explicit `column` (0 or 1) and `row` (zero-indexed, under `SLOTS_PER_COLUMN`) placing the punch card in the rack. Positions are deliberate rather than auto-packed, so the rack keeps its lopsided look as roles are added. `bullets` renders one sticky note each; `Board` cycles three note styles, so more than three still renders.
+
+`Intercom`'s contact links are still inline in the component. That one is genuinely fixed at four: the wheel rotates in 90-degree steps and has four icons positioned by CSS, so a fifth entry would need a layout change, not a data edit.
 
 ### Shared layout vocabulary
 
@@ -63,4 +72,6 @@ Editing site content means editing index-aligned arrays inside components, not d
 - **Fade-in on mount:** a page or section holds `useState({ opacity: 0, marginTop: '6vw' })` in inline style and clears it to `{}` inside an empty-deps `useEffect`, animating via the `transition` on `.section`. `Board.jsx` does the same keyed on its `number` prop to flash on change.
 - **Mobile:** `const isMobile = window.innerWidth <= 768` is read during render in several components and toggles class names. It is not reactive — it does not update on resize or orientation change.
 - **Sounds:** either a `<audio ref>` played on click, or `new Audio('./assets/Sounds/*.mov')` constructed per event. Where the latter can fire rapidly, a `canPlay` boolean state debounces playback for ~500ms.
-- Existing code uses inline style objects and `setTimeout`-based sequencing for animation rather than CSS classes; several files carry stray `console.log`s and unused imports.
+- Existing code uses inline style objects and `setTimeout`-based sequencing for animation rather than CSS classes.
+- `Jukebox.css` references the disc image as an absolute `/assets/Images/record.png`. Vite rewrites that with `base` at build time so production is correct, but it 404s in the dev server — the jukebox disc renders without its image locally. Cosmetic, dev-only.
+- The interactive elements are clickable `div`s with no keyboard or screen-reader affordances, and `img` tags have no `alt`.
