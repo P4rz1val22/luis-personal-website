@@ -1,5 +1,5 @@
 import "./TV.css";
-import React, { useState } from "react";
+import { useState } from "react";
 
 // The TV component for displaying the main page name. [Home Section]
 const Tv = () => {

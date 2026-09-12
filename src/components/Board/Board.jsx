@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import './Board.css';
 
 // The board component that contains the description of 
@@ -43,5 +44,9 @@ const Board = ({ number }) => {
         </div>
     );
 }
+
+Board.propTypes = {
+    number: PropTypes.number.isRequired,
+};
 
 export default Board;

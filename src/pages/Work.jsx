@@ -2,7 +2,7 @@
 import Clock from "../components/Clock/Clock.jsx";
 import Board from "../components/Board/Board.jsx";
 import Intercom from "../components/Intercom/Intercom.jsx";
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Work = () => {
 

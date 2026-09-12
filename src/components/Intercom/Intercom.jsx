@@ -1,5 +1,4 @@
 import './Intercom.css';
-import React from "react";
 import { useState, useRef } from 'react';
 
 // The Intercom component, pointing users towards different ways 

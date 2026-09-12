@@ -1,7 +1,5 @@
 import './Navbar.css';
-import React from "react";
 import PropTypes from 'prop-types';
-import useState from 'react'
 import { Link } from 'react-router-dom';
 
 // A Navbar button that containing the given name and linking to the given path. [All sections]

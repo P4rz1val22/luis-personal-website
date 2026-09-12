@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Clock.css';
 
 // The clock component that shows the time. [Work section].

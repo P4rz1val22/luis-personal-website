@@ -42,16 +42,16 @@ const Home = () => {
             loading="lazy"
           />
           <div className={`text-box " ${isMobile ? "big" : ""}`}>
-            I'm dedicated to using my skills to create tangible, positive
-            change. Whether it's through coding, leading or collaborating with
-            others, I'm determined to push the boundaries of innovation and
+            I&apos;m dedicated to using my skills to create tangible, positive
+            change. Whether it&apos;s through coding, leading or collaborating with
+            others, I&apos;m determined to push the boundaries of innovation and
             create sustainable, ethical solutions to the problems of today and
             tomorrow.
             <br />
             <br />
-            When I'm not buried in code, you might find me exploring the vibrant
+            When I&apos;m not buried in code, you might find me exploring the vibrant
             tech scene in Boston, travelling abroad or brainstorming new ideas
-            for my next project. I'm excited about the future and eager to see
+            for my next project. I&apos;m excited about the future and eager to see
             where my journey in tech will take me next.
           </div>
         </div>

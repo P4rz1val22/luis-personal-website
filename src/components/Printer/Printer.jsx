@@ -1,5 +1,4 @@
 import './Printer.css';
-import React from "react";
 import { useState, useRef } from 'react';
 
 // The Printer component that enables users to access important documents. i.e. my Resume, Letters of recommendation. [Home section]
