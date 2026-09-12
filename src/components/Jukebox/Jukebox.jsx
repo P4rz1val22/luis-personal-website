@@ -19,6 +19,14 @@ const Jukebox = () => {
 
     const currentProject = projects[currentIndex];
 
+    // How far the selected album sits from the centre of the carousel,
+    // measured in album slots. The row is centre-justified, so album 0
+    // sits left of centre and the last album sits right of it. The disc
+    // container shifts by the same amount so the record appears to slide
+    // out of that sleeve. Unitless on purpose — Jukebox.css multiplies it
+    // by --album-slot, which is where the carousel's geometry lives.
+    const discShift = currentIndex - (projects.length - 1) / 2;
+
     // Clicking the album that is already centered slides the disc out of
     // the sleeve and spins it (or puts it back, if it is already out).
     const handleClick = (number) => {
@@ -103,7 +111,7 @@ const Jukebox = () => {
                         </div>
                         <div className='swipe forwards' onClick={() => handleArrowClick(1)} />
                     </div>
-                    <div className='disc-container'>
+                    <div className='disc-container' style={{ '--disc-shift': String(discShift) }}>
                         <div className='disc' onClick={() => handleClick(currentIndex)} style={divStyle} data-content={!isMobile ? currentProject.name : ''}></div>
                     </div>
                 </div>

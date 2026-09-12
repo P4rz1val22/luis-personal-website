@@ -56,6 +56,12 @@
 }
 
 
+/* The selected album is not always centred — the row is centre-justified,
+   so the wide album sits further left or right depending on its index.
+   Shifting the disc's whole container by the same amount makes the record
+   look like it slides out of that specific sleeve rather than out of the
+   middle of the rack. --disc-shift is set from JS as a plain number of
+   slots; the units live here. */
 .disc-container {
     display: flex;
     justify-content: center;
@@ -63,9 +69,20 @@
     width: 100%;
     position: absolute;
     z-index: 1;
+    transform: translateX(calc(var(--album-slot) * var(--disc-shift, 0)));
+    transition: transform .35s ease-in-out;
 }
 
 .project-selector {
+    /* Carousel geometry, in one place. The disc's origin is derived from
+       these so it lines up with whichever album is selected — if a spine
+       width changes here, the disc follows without a JS edit. */
+    --album-spine: 1.5vw;
+    --album-gap: 1vw;
+    --album-slot: calc(var(--album-spine) + var(--album-gap));
+    --album-center: 40vw;
+    --album-center-gap: 2vw;
+
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -180,7 +197,7 @@
     justify-content: center;
     align-items: center;
     font-size: 0vw;
-    width: 1.5vw;
+    width: var(--album-spine);
     /* Spines compress once there are enough projects to fill the
        carousel, but never below a clickable sliver. At six projects
        there is still slack; this only engages past about ten. */
@@ -190,7 +207,7 @@
     background-color: black;
     color: rgba(255, 228, 196, 0);
     transition: .2s ease-in-out;
-    margin: 0.5vw;
+    margin: calc(var(--album-gap) / 2);
     z-index: 3;
     position: relative;
     background-size: contain;
@@ -233,10 +250,10 @@
 .center {
     background-color: black;
     color: white;
-    width: 40vw;
+    width: var(--album-center);
     /* The selected album holds its width no matter how many spines
        surround it — it carries the record art and the title. */
-    flex: 0 0 40vw;
+    flex: 0 0 var(--album-center);
     z-index: 2;
     font-size: 3vw;
     cursor: pointer;
@@ -244,6 +261,6 @@
     transform: scale(1.05);
     background-image: url("/assets/Images/record.png");
     transition: .1s ease-in-out;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-left: calc(var(--album-center-gap) / 2);
+    margin-right: calc(var(--album-center-gap) / 2);
 }
