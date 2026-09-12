@@ -1,6 +1,6 @@
 import Intercom from "../components/Intercom/Intercom";
+import Pegboard from "../components/Pegboard/Pegboard";
 import { useState, useEffect } from 'react'
-import { skills } from '../data/skills';
 
 // The Skills Page
 const Skills = () => {
@@ -28,13 +28,7 @@ const Skills = () => {
                         <div className='sideLines Reverse Blue' />
                     </div>
                 </div>
-                <div className={`skill-section ${isMobile ? 'skill-section-mobile' : ''}`}>
-                    {skills.map((skill) => (
-                        <div key={skill} className={`skill-square ${isMobile ? 'skill-mobile' : ''}`}>
-                            {skill}
-                        </div>
-                    ))}
-                </div>
+                <Pegboard isMobile={isMobile} />
                 <div className="hoz-container heading">
                     <div className='sideLines Orange' />
                     <div className='title'> CONTACT ME</div>

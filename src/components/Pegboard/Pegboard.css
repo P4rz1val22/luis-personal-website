@@ -1,0 +1,173 @@
+/* The pegboard that holds the skill tags. [Skills section]
+   Perforations are a repeating radial-gradient rather than an image, in
+   keeping with the rest of the site's objects being built from CSS. */
+.pegboard {
+    width: 80%;
+    margin: 0 auto;
+    padding: 3vw 2.5vw 3.5vw;
+    border: 1.1vw solid var(--wood-dark);
+    border-radius: 0.8vw;
+    background-color: var(--sage);
+    background-image: radial-gradient(circle, #00000052 0.18vw, transparent 0.19vw);
+    background-size: 2.2vw 2.2vw;
+    box-shadow: 0.5vw 0.5vw 0 #00000038, inset 0 0 3vw #0000002e;
+}
+
+.peg-group {
+    margin-bottom: 3vw;
+}
+
+.peg-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Slight rotation so the label reads as a stuck-on strip rather than
+   a heading typeset into the board. */
+.peg-label {
+    display: inline-block;
+    background-color: var(--ink);
+    color: var(--paper);
+    font-family: Futura, sans-serif;
+    font-size: 1.1vw;
+    letter-spacing: 0.2em;
+    padding: 0.4vw 1.1vw;
+    margin-bottom: 1.6vw;
+    transform: rotate(-1deg);
+    user-select: none;
+}
+
+.peg-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vw 1.1vw;
+}
+
+.peg-tag {
+    position: relative;
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: Futura, sans-serif;
+    font-size: 1.15vw;
+    padding: 1.6vw 1.3vw 0.9vw;
+    border-radius: 0.25vw;
+    box-shadow: 0.2vw 0.3vw 0 #00000047;
+    /* Pivot is the peg hole, not the centre — that is what makes the
+       hover read as something hanging rather than something spinning. */
+    transform-origin: 50% 0.6vw;
+    user-select: none;
+    cursor: default;
+    animation: hang 8s ease-in-out infinite;
+}
+
+/* The hole the tag hangs by. */
+.peg-tag::before {
+    content: '';
+    position: absolute;
+    top: 0.55vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.65vw;
+    height: 0.65vw;
+    border-radius: 50%;
+    background-color: var(--sage);
+    box-shadow: inset 0 0.1vw 0.2vw #00000099;
+}
+
+/* Offsets are a third and two thirds of the cycle, so neighbours stay out
+   of phase. They have to scale with the duration or the board drifts into
+   moving in unison, which reads as a bug rather than as separate objects. */
+.peg-tag:nth-child(3n) {
+    animation-delay: -2.6s;
+}
+
+.peg-tag:nth-child(3n+1) {
+    animation-delay: -5.2s;
+}
+
+.peg-tag:hover {
+    animation: nudge 0.85s cubic-bezier(0.36, 0.1, 0.3, 0.99) both;
+    background-color: var(--orange);
+    color: var(--paper);
+    z-index: 2;
+}
+
+/* Ambient drift, deliberately near the threshold of notice so it does not
+   compete with the hover. */
+@keyframes hang {
+    0%, 100% {
+        transform: rotate(-0.5deg);
+    }
+
+    50% {
+        transform: rotate(0.5deg);
+    }
+}
+
+/* A nudge: swing out, overshoot, settle. Amplitude roughly halves each
+   pass, which is what sells it as a real object on a peg. */
+@keyframes nudge {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    18% {
+        transform: rotate(5deg);
+    }
+
+    42% {
+        transform: rotate(-3deg);
+    }
+
+    62% {
+        transform: rotate(1.7deg);
+    }
+
+    80% {
+        transform: rotate(-0.8deg);
+    }
+
+    92% {
+        transform: rotate(0.35deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .peg-tag,
+    .peg-tag:hover {
+        animation: none;
+    }
+}
+
+/* Mobile: the board keeps its proportions but the type has to stop
+   tracking viewport width or it becomes unreadable. */
+.pegboard.pegboard-mobile {
+    width: 92%;
+    padding: 5vw 4vw 6vw;
+}
+
+.pegboard-mobile .peg-label {
+    font-size: 3vw;
+    padding: 1vw 2.4vw;
+    margin-bottom: 3.4vw;
+}
+
+.pegboard-mobile .peg-row {
+    gap: 3.4vw 2.6vw;
+}
+
+.pegboard-mobile .peg-tag {
+    font-size: 3.1vw;
+    padding: 4vw 3vw 2.2vw;
+    transform-origin: 50% 1.5vw;
+}
+
+.pegboard-mobile .peg-tag::before {
+    top: 1.4vw;
+    width: 1.7vw;
+    height: 1.7vw;
+}
