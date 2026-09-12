@@ -66,7 +66,7 @@ const Work = () => {
             <div className="vert-container">
                 <div className="hoz-container heading">
                     <div className='sideLines Blue' />
-                    <div className='title'> WORK <br /> EXPERIENCE</div>
+                    <div className='title'> EXPERIENCE</div>
                     <div className='sideLines Reverse Blue' />
                 </div>
             </div>
