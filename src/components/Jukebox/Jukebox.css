@@ -160,12 +160,14 @@
     justify-content: center;
 }
 
-/* Sized to its contents rather than a fixed 45%, so the row of album
-   spines can grow with the project list. The cap keeps it clear of the
-   two 14vw swipe arrows either side. */
+/* Widened from the original 45% to fit more album spines, and kept at a
+   FIXED width on purpose. With width:auto the container breathes as the
+   selected album animates from a 1.5vw spine to 40vw, which drags the
+   swipe arrows in and out on every shift. A fixed width lets the album
+   expand inside a stationary frame, so the arrows never move.
+   60vw + the two 18vw arrow columns = 96vw, just inside the viewport. */
 .carousel {
-    width: auto;
-    max-width: 62vw;
+    width: 60vw;
     height: 40vw;
     display: flex;
     flex-direction: row;
@@ -179,8 +181,9 @@
     align-items: center;
     font-size: 0vw;
     width: 1.5vw;
-    /* Spines may compress once there are enough projects to reach the
-       carousel's max-width, but never below a clickable sliver. */
+    /* Spines compress once there are enough projects to fill the
+       carousel, but never below a clickable sliver. At six projects
+       there is still slack; this only engages past about ten. */
     flex: 0 1 auto;
     min-width: 0.8vw;
     height: 40vw;
